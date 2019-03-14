@@ -1,7 +1,7 @@
 {
   "name": "markdown-serializer",
   "description": "serializers for slate",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "repository": "https://github.com/digitalhydra/markdown-serializer",
   "bugs": "https://github.com/digitalhydra/markdown-serializer/issues",
   "main": "src/index.js",
