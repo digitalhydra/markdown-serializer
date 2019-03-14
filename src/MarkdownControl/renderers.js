@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 
 import React from 'react';
-import Shortcode from './Shortcode';
 
 /**
  * Slate uses React components to render each type of node that it receives.
@@ -131,7 +130,5 @@ export const renderNode = props => {
       return <Link {...props} />;
     case 'image':
       return <Image {...props} />;
-    case 'shortcode':
-      return <Shortcode {...props} />;
   }
 };

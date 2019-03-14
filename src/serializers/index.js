@@ -7,7 +7,6 @@ import remarkToRehype from 'remark-rehype';
 import rehypeToHtml from 'rehype-stringify';
 import htmlToRehype from 'rehype-parse';
 import rehypeToRemark from 'rehype-remark';
-import remarkToRehypeShortcodes from './remarkRehypeShortcodes';
 import rehypePaperEmoji from './rehypePaperEmoji';
 import remarkAssertParents from './remarkAssertParents';
 import remarkPaddedLinks from './remarkPaddedLinks';
@@ -15,12 +14,10 @@ import remarkWrapHtml from './remarkWrapHtml';
 import remarkToSlate from './remarkSlate';
 import remarkSquashReferences from './remarkSquashReferences';
 import remarkImagesToText from './remarkImagesToText';
-import remarkShortcodes from './remarkShortcodes';
 import remarkEscapeMarkdownEntities from './remarkEscapeMarkdownEntities';
 import remarkStripTrailingBreaks from './remarkStripTrailingBreaks';
 import remarkAllowHtmlEntities from './remarkAllowHtmlEntities';
 import slateToRemark from './slateRemark';
-import { getEditorComponents } from '../MarkdownControl';
 
 /**
  * This module contains all serializers for the Markdown widget.
@@ -75,7 +72,6 @@ export const markdownToRemark = markdown => {
   const result = unified()
     .use(remarkSquashReferences)
     .use(remarkImagesToText)
-    .use(remarkShortcodes, { plugins: getEditorComponents() })
     .runSync(parsed);
 
   return result;
@@ -151,7 +147,6 @@ export const markdownToHtml = (markdown, getAsset) => {
   const mdast = markdownToRemark(markdown);
 
   const hast = unified()
-    .use(remarkToRehypeShortcodes, { plugins: getEditorComponents(), getAsset })
     .use(remarkToRehype, { allowDangerousHTML: true })
     .runSync(mdast);
 
@@ -180,7 +175,6 @@ export const htmlToSlate = html => {
     .use(remarkAssertParents)
     .use(remarkPaddedLinks)
     .use(remarkImagesToText)
-    .use(remarkShortcodes, { plugins: getEditorComponents() })
     .use(remarkWrapHtml)
     .use(remarkToSlate)
     .runSync(mdast);
@@ -212,7 +206,7 @@ export const markdownToSlate = markdown => {
  * trees.
  */
 export const slateToMarkdown = raw => {
-  const mdast = slateToRemark(raw, { shortcodePlugins: getEditorComponents() });
+  const mdast = slateToRemark(raw);
   const markdown = remarkToMarkdown(mdast);
   return markdown;
 };

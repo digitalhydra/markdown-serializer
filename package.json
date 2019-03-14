@@ -1,16 +1,12 @@
 {
-  "name": "netlify-cms-widget-markdown",
-  "description": "Widget for editing markdown in Netlify CMS.",
+  "name": "markdown-serializer",
+  "description": "serializers for slate",
   "version": "2.2.0",
-  "homepage": "https://www.netlifycms.org/docs/widgets/#markdown",
-  "repository": "https://github.com/netlify/netlify-cms/tree/master/packages/netlify-cms-widget-markdown",
-  "bugs": "https://github.com/netlify/netlify-cms/issues",
-  "main": "dist/netlify-cms-widget-markdown.js",
+  "repository": "https://github.com/digitalhydra/markdown-serializer",
+  "bugs": "https://github.com/digitalhydra/markdown-serializer/issues",
+  "main": "dist/index.js",
   "license": "MIT",
   "keywords": [
-    "netlify",
-    "netlify-cms",
-    "widget",
     "markdown",
     "editor"
   ],
@@ -18,12 +14,26 @@
   "scripts": {
     "watch": "webpack -w",
     "develop": "npm run watch",
-    "build": "cross-env NODE_ENV=production webpack"
+    "build": "webpack --mode production"
   },
   "dependencies": {
-    "is-hotkey": "^0.1.1",
-    "mdast-util-definitions": "^1.2.2",
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "immutable": "^3.7.6",
+    "is-hotkey": "^0.1.4",
+    "lodash": "^4.17.11",
+    "mdast-util-definitions": "^1.2.3",
     "mdast-util-to-string": "^1.0.4",
+    "prop-types": "^15.5.10",
+    "react": "^16.4.1",
+    "react-dom": "^16.0.0",
+    "react-immutable-proptypes": "^2.1.0",
     "rehype-parse": "^3.1.0",
     "rehype-remark": "^2.0.0",
     "rehype-stringify": "^3.0.0",
@@ -37,23 +47,12 @@
     "slate-react": "0.12.9",
     "slate-soft-break": "^0.6.1",
     "unified": "^6.1.4",
-    "unist-builder": "^1.0.2",
+    "unist-builder": "^1.0.3",
     "unist-util-visit-parents": "^1.1.1"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "webpack": "^4.16.1",
-    "webpack-cli": "^3.1.0"
-  },
-  "peerDependencies": {
-    "emotion": "^9.2.6",
-    "immutable": "^3.7.6",
-    "lodash": "^4.17.10",
-    "netlify-cms-ui-default": "^2.0.0",
-    "prop-types": "^15.5.10",
-    "react": "^16.4.1",
-    "react-dom": "^16.0.0",
-    "react-emotion": "^9.2.5",
-    "react-immutable-proptypes": "^2.1.0"
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
   }
 }
