@@ -4,7 +4,7 @@ import { Block, Text } from 'slate';
  * Validation functions are used to validate the editor state each time it
  * changes, to ensure it is never rendered in an undesirable state.
  */
-export function validateNode(node) {
+export default function validateNode(node) {
   /**
    * Validation of the document itself.
    */
